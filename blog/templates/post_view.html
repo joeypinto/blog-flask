@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Visualizar Postagem{% endblock %} {% block
+content %}
+
+<div class="row">
+    <div class="col-md-8 mx-auto entry-meta view">
+        <img width="730" height="410" src="/static/profile_pics/{{posts.image_file}}">
+        <div class="post-inner-content">
+
+            <h1 class="entry-title ">{{posts.title }}</h1>
+            <span>
+                <i class="fa fa-calendar-alt"></i>
+                {{posts.date_posted}}
+            </span>
+            <div>
+                {{posts.description |safe }}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 categories">
+        <div class="card">
+            <div class="card-header">Categories</div>
+            <div class="card-body">
+                <ul>
+                {% for content in  contents%}    
+                    <li><a href="/?content_type={{content.id}}">{{content.name}}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+
+{% endblock %}

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous" />
+
+    <title>{% block title %}Home{% endblock %}</title>
+    <style>
+        .menuLateral {
+            width: 200px;
+            height: 100%;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: 9999;
+            background: #363f46;
+
+        }
+
+        .navMenu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #2e3138 none repeat scroll top left;
+            height: 59px;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+        }
+
+        .navMenu li {
+            float: left;
+        }
+
+        .navMenu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 17px 16px;
+            text-decoration: none;
+            margin: auto;
+            height: 59px;
+        }
+
+        .navMenu li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+
+        .title {
+            padding: 7px 14px;
+            background: #fc4f3f;
+            color: #fff;
+            font-family: 'Oswald';
+            font-weight: 400;
+            font-size: 25px;
+            text-transform: uppercase;
+            margin: 0;
+            margin-left: 90px;
+            line-height: 45px;
+            position: relative;
+
+        }
+
+        .navright {
+            float: right !important;
+
+        }
+
+        li.menu {
+            color: #6b6c71;
+            display: inline-block;
+            text-transform: Capitalize;
+            cursor: pointer;
+            z-index: 93;
+            font-weight: 400;
+            font-size: 25px;
+        }
+
+        .close {
+            cursor: pointer;
+            background: #fe4e3f;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 12px 15px;
+            display: block;
+        }
+
+        #menu-social-id {
+            background: #1d2025;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            opacity: .9;
+
+        }
+
+        .copyv h3 {
+            margin: 0px;
+            font-family: 'Oswald', serif;
+            font-weight: 400;
+            font-size: 62px;
+            line-height: 72px;
+            padding: 0px 20px;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            text-align: center;
+        }
+
+        .menu-social h3 {
+            color: #fdfdfd;
+        }
+
+        .menu-social span {
+            color: #fe4e3f;
+        }
+
+        #sfb-social {
+            width: 100%;
+            text-align: center;
+            margin: 20px 0;
+
+        }
+
+        #sfb-social ul {
+            padding: 15px;
+            margin: 0 0 10px;
+            text-align: center;
+            background: transparent;
+            opacity: 0.98;
+            list-style: none;
+            font-size: 100%;
+        }
+
+        #sfb-social li {
+            display: inline-block;
+
+        }
+
+        #sfb-social>ul>li a {
+            color: #fe4e3f;
+            font-size: 34px;
+            float: left;
+            width: 34px;
+            height: 34px;
+            transition: color 1s ease-out 0s;
+        }
+
+        .copyv p {
+            color: #e8eaef;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .side-nav>ul {
+            list-style-type: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 0px;
+            margin: 0px, 10px;
+            text-align: center;
+        }
+
+        .side-nav>ul>li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .side-nav>ul>li:hover {
+            text-decoration: none;
+            background: #424d55;
+        }
+
+        .card-post {
+            color: #fff;
+            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            background-color: #2e3138;
+            width: 400px;
+            height: 200px;
+            margin: 10px;
+            box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+        }
+
+        .title-post {
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif
+                /*rtl:Amiri, Georgia, "Times New Roman", serif*/
+            ;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .card-img-top {
+            max-width: 728px !important;
+            max-height: 350px !important;
+        }
+
+        .entry-title {
+            color: #444;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .entry-meta span {
+            font-size: 13px;
+            color: #6b6b6b;
+        }
+
+        .post-inner-content {
+            padding: 45px 50px;
+            background-color: #fff;
+            border: 1px solid #dadada;
+            border-top: none;
+        }
+
+        .categories {
+            padding: 30px;
+        }
+
+        .categories ul li {
+            list-style: none;
+            border-bottom: 1px solid #f2f2f2;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        .categories>h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            margin-top: 0;
+            color: #636467;
+        }
+        .view img{
+            max-width:730px;
+            max-height:500px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $(".toggle").click(function () {
+                $(".side-nav").animate({
+                    width: 'toggle'
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navs">
+        <ul class="navMenu">
+            <li>
+                <div class="titlewrapper">
+                    <h1 class="title">
+                        Blog Sfb
+                    </h1>
+                </div>
+            </li>
+
+            <li class="navright menu"><a class="toggle"><i class="fa fa-bars" aria-hidden="true"></i></a> </li>
+
+
+
+            {% if user.is_authenticated %}
+            <li class="navright"><a id="logout" href="/logout">Logout</a></li>
+            <li class="navright"><a {%- if request.path=="/admin/nova_postagem" %} class="active" {% else%}
+                    class="nav-link" {% endif %} aria-current="page" href="/admin/nova_postagem">Novo Post</a></li>
+            <li class="navright"><a {%- if request.path=="/admin/content_type" %} class="active" {% else%}
+                    class="nav-link" {% endif %} aria-current="page" href="/admin/content_type">Conteudos</a></li>
+
+            {% endif %}
+            <!-- <li class="navright"><a href="#about">About</a></li> -->
+            <li class="navright"><a {%- if request.path=="/" %} class="active" {% else%} class="nav-link" {% endif %}
+                    aria-current="page" href="/">Inicio</a></li>
+        </ul>
+    </nav>
+    <aside id="side-nav" class="side-nav menuLateral " hidden>
+        <a class="toggle close"><i class="fa fa-bars" aria-hidden="true"></i> Menu</a>
+        <ul>
+            <li>Animes</li>
+            <li>Musicas</li>
+            <li>Filmes</li>
+        </ul>
+
+    </aside>
+
+    <section class="menu-social" id="menu-social-id">
+        <div class="inner1">
+            <div class="copyv">
+                <h3>John<span>Lenon</span></h3>
+                <p>Blog Pessoal de Divulgação de Projetos, Ideias e Compartilhamento de Conhecimento</p>
+                <div id="sfb-social">
+                    <ul>
+                        <li class="youtube-item"><a href="#"><i class="fa fa-youtube-square"></i><span
+                                    class="inv"></span></a></li>
+                        <li class="linkedin-item"><a
+                                href="https://www.linkedin.com/in/john-lenon-freire-pinto-a892aa82/"><i
+                                    class="fa fa-linkedin-square"></i><span class="inv"></span></a></li>
+                        <li class="git-item"><a href="https://github.com/johnlfreire"><i
+                                    class="fa fa-github-square"></i><span class="inv"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <div class="container">{% block content %} {% endblock %}</div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  <title>{% block title %}Home{% endblock %}</title>
+  <style>
+    .nav-link {
+      display: block;
+      padding: .5rem 1rem;
+      text-decoration: none;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+      color: #fff;
+      margin-right: 10px;
+      text-transform: uppercase;
+      font-weight: 200 !important;
+      font-size: 14px
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")
+    }
+
+    .navbar-nav .active {
+      border-bottom: 4px solid #fff
+    }
+
+    .logo {
+      margin-bottom: 7px !important
+    }
+
+    .navbar {
+      padding-top: .5rem;
+      padding-bottom: 0px !important
+    }
+
+    .colorgraph {
+      height: 5px;
+      border-top: 0;
+      background: #c4e17f;
+      border-radius: 5px;
+      background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+      background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+      background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+      background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    }
+
+    .card-img-top {
+      max-width: 728px !important;
+      max-height: 350px !important;
+    }
+
+    .entry-title {
+      color: #444;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .entry-meta span {
+      font-size: 13px;
+      color: #6b6b6b;
+    }
+
+    .post-inner-content {
+      padding: 45px 50px;
+      background-color: #fff;
+      border: 1px solid #dadada;
+      border-top: none;
+    }
+
+    .categories {
+      padding: 30px;
+    }
+
+    .categories ul li {
+      list-style: none;
+      border-bottom: 1px solid #f2f2f2;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+    }
+
+    .categories>h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      margin-top: 0;
+      color: #636467;
+    }
+
+    #menu-social-id {
+      background: #1d2025;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      opacity: .9;
+
+    }
+
+    .copyv h3 {
+      margin: 0px;
+      font-family: 'Oswald', serif;
+      font-weight: 400;
+      font-size: 62px;
+      line-height: 72px;
+      padding: 0px 20px;
+      text-transform: uppercase;
+      letter-spacing: 15px;
+      text-align: center;
+    }
+
+    .menu-social h3 {
+      color: #fdfdfd;
+    }
+
+    .menu-social span {
+      color: #fe4e3f;
+    }
+
+    #sfb-social {
+      width: 100%;
+      text-align: center;
+      margin: 20px 0;
+
+    }
+
+    #sfb-social ul {
+      padding: 15px;
+      margin: 0 0 10px;
+      text-align: center;
+      background: transparent;
+      opacity: 0.98;
+      list-style: none;
+      font-size: 100%;
+    }
+
+    #sfb-social li {
+      display: inline-block;
+
+    }
+
+    #sfb-social>ul>li a {
+      color: #fe4e3f;
+      font-size: 34px;
+      float: left;
+      width: 34px;
+      height: 34px;
+      transition: color 1s ease-out 0s;
+    }
+
+    .copyv p {
+      color: #e8eaef;
+      font-size: 18px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse bg-dark " id="navbar">
+      <div class="navbar-nav navbar-rigth">
+        <div class="d-flex">
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> <img src="https://img.icons8.com/nolan/48/warning-shield.png" width="30"
+          class="logo" /> </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> <span
+          class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a {%- if request.path=="/" %} class="active nav-link" {% else%} class="nav-link" {% endif %}
+            aria-current="page" href="/">Home</a>
+          {% if user.is_authenticated %}
+          <a class="nav-link" id="content_type" href="/admin/nova_postagem">Novo Post</a>
+          <a class="nav-link" id="content_type" href="/admin/content_type">Conteudos</a>
+          <a class="nav-link" id="logout" href="/logout">Logout</a>
+          {% else %}
+
+          {% endif %}
+          <!-- <a class="nav-link" href="#"> <img src="https://i.imgur.com/C4egmYM.jpg" class="rounded-circle" width="30"> </a> -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %} {% for category, message in messages %} {% if category ==
+  'error' %}
+  <div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% else %}
+  <div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endif %} {% endfor %} {% endif %} {% endwith %}
+  {% block description %} sd {% endblock %}
+  <div class="container">
+    {% block content %} {% endblock %}
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

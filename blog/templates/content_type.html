@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}Tipo de conteudo{% endblock %} {% block
+    content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-group"> 
+                {% for conteudo in conteudos %}
+                <li class="list-group-item">{{ conteudo.name }}</li>
+                {% endfor %}
+            </ul>
+             
+        </div>
+        <div class="col-md-4 card">
+            <div class="card-body">
+            <h5 class="card-title text-center">Adicionar Novo Conteúdo</h5>   
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Informe o nome do conteúdo" />
+                </div>
+                <div align="center">
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </div>
+            </form>   
+        </div>     
+        </div>
+      
+        </div>
+    {% endblock %}
